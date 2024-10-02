@@ -1,0 +1,726 @@
+{
+    "C": {
+        "easy": [
+            {
+                "question": "Which of the following is a valid variable declaration in C?",
+                "options": [
+                    "int 1x;",
+                    "int x1;",
+                    "int x.1;",
+                    "int #x;"
+                ],
+                "correct_answer": "int x1;"
+            },
+            {
+                "question": "Which symbol is used to end a statement in C?",
+                "options": [
+                    ";",
+                    ":",
+                    ".",
+                    ","
+                ],
+                "correct_answer": ";"
+            },
+            {
+                "question": "Which data type is used to store a character in C?",
+                "options": [
+                    "char",
+                    "int",
+                    "float",
+                    "double"
+                ],
+                "correct_answer": "char"
+            },
+            {
+                "question": "What is the size of an int data type in C?",
+                "options": [
+                    "2 bytes",
+                    "4 bytes",
+                    "8 bytes",
+                    "16 bytes"
+                ],
+                "correct_answer": "4 bytes"
+            },
+            {
+                "question": "Which function is used to print output in C?",
+                "options": [
+                    "printf()",
+                    "print()",
+                    "output()",
+                    "disp()"
+                ],
+                "correct_answer": "printf()"
+            }
+        ],
+        "intermediate": [
+            {
+                "question": "What is the output of the following code? \n#include<stdio.h>\nint main() { int x = 5; printf('%d', x++); return 0; }",
+                "options": [
+                    "5",
+                    "6",
+                    "Error",
+                    "Undefined"
+                ],
+                "correct_answer": "5"
+            },
+            {
+                "question": "Which keyword is used to define a constant in C?",
+                "options": [
+                    "const",
+                    "constant",
+                    "static",
+                    "final"
+                ],
+                "correct_answer": "const"
+            },
+            {
+                "question": "How can we allocate dynamic memory in C?",
+                "options": [
+                    "malloc()",
+                    "new",
+                    "alloc()",
+                    "create()"
+                ],
+                "correct_answer": "malloc()"
+            },
+            {
+                "question": "Which of the following is a valid array declaration in C?",
+                "options": [
+                    "int arr[] = {1, 2, 3};",
+                    "int arr[] = 1, 2, 3;",
+                    "int arr = {1, 2, 3};",
+                    "int arr(3);"
+                ],
+                "correct_answer": "int arr[] = {1, 2, 3};"
+            },
+            {
+                "question": "What is a pointer in C?",
+                "options": [
+                    "A variable that stores the address of another variable",
+                    "A function pointer",
+                    "A reference",
+                    "None of the above"
+                ],
+                "correct_answer": "A variable that stores the address of another variable"
+            },
+            {
+                "question": "What does the function 'free()' do in C?",
+                "options": [
+                    "Deallocates dynamic memory",
+                    "Frees all variables",
+                    "Resets the stack",
+                    "None of the above"
+                ],
+                "correct_answer": "Deallocates dynamic memory"
+            },
+            {
+                "question": "Which of the following is used to terminate a loop in C?",
+                "options": [
+                    "break",
+                    "stop",
+                    "exit",
+                    "terminate"
+                ],
+                "correct_answer": "break"
+            },
+            {
+                "question": "Which operator is used to get the value at the address stored in a pointer?",
+                "options": [
+                    "*",
+                    "&",
+                    "^",
+                    "%"
+                ],
+                "correct_answer": "*"
+            },
+            {
+                "question": "Which of the following is used to include a library in C?",
+                "options": [
+                    "#include",
+                    "#import",
+                    "import",
+                    "require"
+                ],
+                "correct_answer": "#include"
+            },
+            {
+                "question": "What is the size of a pointer in C on a 64-bit system?",
+                "options": [
+                    "8 bytes",
+                    "4 bytes",
+                    "16 bytes",
+                    "2 bytes"
+                ],
+                "correct_answer": "8 bytes"
+            }
+        ],
+        "advanced": [
+            {
+                "question": "What is a segmentation fault in C?",
+                "options": [
+                    "Accessing memory that a program does not have permission to access",
+                    "An error due to stack overflow",
+                    "A syntax error",
+                    "A compilation error"
+                ],
+                "correct_answer": "Accessing memory that a program does not have permission to access"
+            },
+            {
+                "question": "Which of the following is a valid function pointer declaration in C?",
+                "options": [
+                    "int (*fptr)();",
+                    "int fptr();",
+                    "pointer int fptr();",
+                    "None of the above"
+                ],
+                "correct_answer": "int (*fptr)();"
+            },
+            {
+                "question": "What is the difference between a struct and a union in C?",
+                "options": [
+                    "All members of a struct have separate memory, while all members of a union share the same memory",
+                    "Structs are faster than unions",
+                    "Unions are type-safe, structs are not",
+                    "None of the above"
+                ],
+                "correct_answer": "All members of a struct have separate memory, while all members of a union share the same memory"
+            },
+            {
+                "question": "Which memory area is used by dynamic memory allocation functions like malloc() in C?",
+                "options": [
+                    "Heap",
+                    "Stack",
+                    "Data segment",
+                    "Code segment"
+                ],
+                "correct_answer": "Heap"
+            },
+            {
+                "question": "What is the output of the following code? \n#include<stdio.h>\nint main() { char arr[] = 'hello'; printf('%s', arr); return 0; }",
+                "options": [
+                    "hello",
+                    "h",
+                    "compile error",
+                    "undefined"
+                ],
+                "correct_answer": "compile error"
+            },
+            {
+                "question": "What does the 'volatile' keyword indicate in C?",
+                "options": [
+                    "That the variable may be changed unexpectedly",
+                    "That the variable is constant",
+                    "That the variable is stored in a register",
+                    "None of the above"
+                ],
+                "correct_answer": "That the variable may be changed unexpectedly"
+            },
+            {
+                "question": "What is the output of the following code? \n#include<stdio.h>\nvoid foo() { int x = 10; static int y = 10; x++; y++; printf('%d %d\\n', x, y); }\nint main() { foo(); foo(); return 0; }",
+                "options": [
+                    "11 11\n11 12",
+                    "11 11\n12 12",
+                    "11 11\n11 11",
+                    "Compile error"
+                ],
+                "correct_answer": "11 11\n11 12"
+            },
+            {
+                "question": "Which of the following is not a standard library function in C?",
+                "options": [
+                    "strcpy()",
+                    "malloc()",
+                    "toUpper()",
+                    "memcpy()"
+                ],
+                "correct_answer": "toUpper()"
+            },
+            {
+                "question": "What is the use of the 'extern' keyword in C?",
+                "options": [
+                    "To declare a global variable",
+                    "To declare a function that can be used in multiple files",
+                    "Both A and B",
+                    "None of the above"
+                ],
+                "correct_answer": "Both A and B"
+            },
+            {
+                "question": "Which type of errors can be detected by the compiler?",
+                "options": [
+                    "Syntax errors",
+                    "Runtime errors",
+                    "Logical errors",
+                    "None of the above"
+                ],
+                "correct_answer": "Syntax errors"
+            },
+            {
+                "question": "What will happen if you try to access an array out of bounds in C?",
+                "options": [
+                    "It leads to undefined behavior",
+                    "It will give a compile-time error",
+                    "It will give a runtime error",
+                    "It will print 0"
+                ],
+                "correct_answer": "It leads to undefined behavior"
+            },
+            {
+                "question": "What is the output of the following code? \n#include<stdio.h>\nint main() { int x = 5, y = 6; printf('%d', x+++y); return 0; }",
+                "options": [
+                    "Compile error",
+                    "11",
+                    "5",
+                    "6"
+                ],
+                "correct_answer": "Compile error"
+            },
+            {
+                "question": "What is the difference between calloc() and malloc() in C?",
+                "options": [
+                    "calloc() initializes the allocated memory to zero, while malloc() leaves it uninitialized",
+                    "malloc() is faster than calloc()",
+                    "malloc() allocates memory on the heap, while calloc() allocates on the stack",
+                    "None of the above"
+                ],
+                "correct_answer": "calloc() initializes the allocated memory to zero, while malloc() leaves it uninitialized"
+            }
+        ]
+    },
+    "Python": {
+        "easy": [
+            {
+                "question": "Which of the following is the correct file extension for Python files?",
+                "options": [
+                    ".py",
+                    ".python",
+                    ".pt",
+                    ".pyt"
+                ],
+                "correct_answer": ".py"
+            },
+            {
+                "question": "How do you create a variable with the floating number 2.8 in Python?",
+                "options": [
+                    "x = 2.8",
+                    "float x = 2.8",
+                    "x = float(2.8)",
+                    "float(x) = 2.8"
+                ],
+                "correct_answer": "x = 2.8"
+            },
+            {
+                "question": "What is the correct syntax to output the type of a variable in Python?",
+                "options": [
+                    "print(type(x))",
+                    "print(typeof(x))",
+                    "print(typeOf(x))",
+                    "print(x.type())"
+                ],
+                "correct_answer": "print(type(x))"
+            },
+            {
+                "question": "Which function is used to get input from the user in Python?",
+                "options": [
+                    "input()",
+                    "scan()",
+                    "read()",
+                    "get()"
+                ],
+                "correct_answer": "input()"
+            },
+            {
+                "question": "Which keyword is used to define a function in Python?",
+                "options": [
+                    "def",
+                    "function",
+                    "func",
+                    "define"
+                ],
+                "correct_answer": "def"
+            }
+        ],
+        "intermediate": [
+            {
+                "question": "Which of the following is a mutable data type in Python?",
+                "options": [
+                    "list",
+                    "tuple",
+                    "str",
+                    "int"
+                ],
+                "correct_answer": "list"
+            },
+            {
+                "question": "What is the output of the following code? \nx = [1, 2, 3]\nprint(x[-1])",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "Error"
+                ],
+                "correct_answer": "3"
+            },
+            {
+                "question": "Which statement is used to handle exceptions in Python?",
+                "options": [
+                    "try",
+                    "catch",
+                    "error",
+                    "throw"
+                ],
+                "correct_answer": "try"
+            },
+            {
+                "question": "Which method can be used to return a string in lower case?",
+                "options": [
+                    "lower()",
+                    "toLowerCase()",
+                    "lowercase()",
+                    "downcase()"
+                ],
+                "correct_answer": "lower()"
+            },
+            {
+                "question": "Which operator is used to compare two values in Python?",
+                "options": [
+                    "==",
+                    "=",
+                    "equals",
+                    "eq()"
+                ],
+                "correct_answer": "=="
+            },
+            {
+                "question": "Which keyword is used to create an anonymous function in Python?",
+                "options": [
+                    "lambda",
+                    "anonymous",
+                    "def",
+                    "None"
+                ],
+                "correct_answer": "lambda"
+            },
+            {
+                "question": "What is the correct way to create a class in Python?",
+                "options": [
+                    "class MyClass:",
+                    "MyClass class:",
+                    "def MyClass:",
+                    "create MyClass:"
+                ],
+                "correct_answer": "class MyClass:"
+            },
+            {
+                "question": "Which of the following is a built-in function in Python?",
+                "options": [
+                    "len()",
+                    "size()",
+                    "count()",
+                    "length()"
+                ],
+                "correct_answer": "len()"
+            },
+            {
+                "question": "What is the output of this code? \nprint(bool(0))",
+                "options": [
+                    "True",
+                    "False",
+                    "Error",
+                    "None"
+                ],
+                "correct_answer": "False"
+            },
+            {
+                "question": "Which method is used to add an item to a list in Python?",
+                "options": [
+                    "append()",
+                    "insert()",
+                    "add()",
+                    "extend()"
+                ],
+                "correct_answer": "append()"
+            }
+        ],
+        "advanced": [
+            {
+                "question": "Which of the following is not a Python data type?",
+                "options": [
+                    "set",
+                    "list",
+                    "tuple",
+                    "array"
+                ],
+                "correct_answer": "array"
+            },
+            {
+                "question": "What does the 'self' keyword represent in Python?",
+                "options": [
+                    "The instance of the class",
+                    "The class itself",
+                    "A global variable",
+                    "A static method"
+                ],
+                "correct_answer": "The instance of the class"
+            },
+            {
+                "question": "What is the difference between 'is' and '==' in Python?",
+                "options": [
+                    "'is' compares identities, '==' compares values",
+                    "'is' compares values, '==' compares identities",
+                    "They are the same",
+                    "None of the above"
+                ],
+                "correct_answer": "'is' compares identities, '==' compares values"
+            },
+            {
+                "question": "Which of the following methods is called when an object is created?",
+                "options": [
+                    "__init__",
+                    "__new__",
+                    "__create__",
+                    "__start__"
+                ],
+                "correct_answer": "__init__"
+            },
+            {
+                "question": "Which of the following functions opens a file in Python?",
+                "options": [
+                    "open()",
+                    "file()",
+                    "read()",
+                    "access()"
+                ],
+                "correct_answer": "open()"
+            },
+            {
+                "question": "What is a Python decorator?",
+                "options": [
+                    "A function that modifies another function",
+                    "A class",
+                    "A module",
+                    "An attribute"
+                ],
+                "correct_answer": "A function that modifies another function"
+            },
+            {
+                "question": "Which of the following methods removes duplicates from a list?",
+                "options": [
+                    "set()",
+                    "unique()",
+                    "remove()",
+                    "filter()"
+                ],
+                "correct_answer": "set()"
+            },
+            {
+                "question": "What is the purpose of 'yield' in Python?",
+                "options": [
+                    "To return a generator",
+                    "To return a function",
+                    "To stop a loop",
+                    "To raise an error"
+                ],
+                "correct_answer": "To return a generator"
+            },
+            {
+                "question": "Which of the following is used to check memory consumption of an object in Python?",
+                "options": [
+                    "sys.getsizeof()",
+                    "memcheck()",
+                    "memory_size()",
+                    "mem()"
+                ],
+                "correct_answer": "sys.getsizeof()"
+            },
+            {
+                "question": "Which library is used for data analysis in Python?",
+                "options": [
+                    "pandas",
+                    "numpy",
+                    "matplotlib",
+                    "scipy"
+                ],
+                "correct_answer": "pandas"
+            },
+            {
+                "question": "What does 'map()' function do in Python?",
+                "options": [
+                    "Applies a function to all items in an iterable",
+                    "Maps two values",
+                    "Creates a dictionary",
+                    "Returns a list of functions"
+                ],
+                "correct_answer": "Applies a function to all items in an iterable"
+            },
+            {
+                "question": "How can you make a Python script executable?",
+                "options": [
+                    "By adding a shebang line",
+                    "By importing __main__",
+                    "By adding 'exec'",
+                    "By using print()"
+                ],
+                "correct_answer": "By adding a shebang line"
+            },
+            {
+                "question": "What does the 'with' statement ensure in Python?",
+                "options": [
+                    "Proper acquisition and release of resources",
+                    "Inheritance of a class",
+                    "Calling of a function",
+                    "None of the above"
+                ],
+                "correct_answer": "Proper acquisition and release of resources"
+            }
+        ]
+    },
+    "JavaScript": {
+        "easy": [
+            {
+                "question": "Which company developed JavaScript?",
+                "options": ["Netscape", "Microsoft", "Google", "Apple"],
+                "correct_answer": "Netscape"
+            },
+            {
+                "question": "Which of the following is the correct syntax to print a message in the console?",
+                "options": ["console.log('Hello');", "print('Hello');", "log.console('Hello');", "console.write('Hello');"],
+                "correct_answer": "console.log('Hello');"
+            },
+            {
+                "question": "Inside which HTML element do we put the JavaScript?",
+                "options": ["<script>", "<javascript>", "<js>", "<code>"],
+                "correct_answer": "<script>"
+            },
+            {
+                "question": "Which operator is used to assign a value to a variable in JavaScript?",
+                "options": ["=", "==", "===", "->"],
+                "correct_answer": "="
+            },
+            {
+                "question": "How do you create a function in JavaScript?",
+                "options": ["function myFunction()", "function:myFunction()", "def myFunction()", "create.myFunction()"],
+                "correct_answer": "function myFunction()"
+            }
+        ],
+        "intermediate": [
+            {
+                "question": "Which of the following is a correct way to declare a JavaScript variable?",
+                "options": ["var x;", "variable x;", "v x;", "declare x;"],
+                "correct_answer": "var x;"
+            },
+            {
+                "question": "Which of the following methods is used to access HTML elements using JavaScript?",
+                "options": ["getElementById()", "getElements()", "getElement()", "findElement()"],
+                "correct_answer": "getElementById()"
+            },
+            {
+                "question": "Which built-in method calls a function for each element in the array?",
+                "options": ["forEach()", "each()", "every()", "map()"],
+                "correct_answer": "forEach()"
+            },
+            {
+                "question": "How can you add a comment in JavaScript?",
+                "options": ["// This is a comment", "<!-- This is a comment -->", "# This is a comment", "* This is a comment"],
+                "correct_answer": "// This is a comment"
+            },
+            {
+                "question": "What is the result of the following expression? '5' + 2",
+                "options": ["52", "7", "NaN", "Error"],
+                "correct_answer": "52"
+            },
+            {
+                "question": "Which of the following is used to define an object in JavaScript?",
+                "options": ["{}", "[]", "()", "<>"],
+                "correct_answer": "{}"
+            },
+            {
+                "question": "How do you write an if statement in JavaScript?",
+                "options": ["if (x == 5)", "if x == 5", "if x = 5", "if x === 5 then"],
+                "correct_answer": "if (x == 5)"
+            },
+            {
+                "question": "What is the result of 'typeof []' in JavaScript?",
+                "options": ["object", "array", "undefined", "function"],
+                "correct_answer": "object"
+            },
+            {
+                "question": "How can you convert a string to an integer in JavaScript?",
+                "options": ["parseInt()", "int()", "Number()", "convert()"],
+                "correct_answer": "parseInt()"
+            },
+            {
+                "question": "Which method is used to remove the last element from an array?",
+                "options": ["pop()", "shift()", "remove()", "delete()"],
+                "correct_answer": "pop()"
+            }
+        ],
+        "advanced": [
+            {
+                "question": "What is the difference between '==' and '===' in JavaScript?",
+                "options": ["'==' checks value, '===' checks value and type", "'==' checks type, '===' checks value", "They are the same", "None of the above"],
+                "correct_answer": "'==' checks value, '===' checks value and type"
+            },
+            {
+                "question": "Which method returns the length of a string?",
+                "options": ["length", "size()", "count()", "getLength()"],
+                "correct_answer": "length"
+            },
+            {
+                "question": "What does the 'this' keyword refer to in JavaScript?",
+                "options": ["The current object", "The current function", "The current class", "The global object"],
+                "correct_answer": "The current object"
+            },
+            {
+                "question": "Which of the following methods is used to merge two arrays?",
+                "options": ["concat()", "append()", "merge()", "add()"],
+                "correct_answer": "concat()"
+            },
+            {
+                "question": "Which of the following is NOT a JavaScript data type?",
+                "options": ["float", "number", "string", "boolean"],
+                "correct_answer": "float"
+            },
+            {
+                "question": "Which keyword is used to create a promise in JavaScript?",
+                "options": ["new Promise()", "promise()", "new() promise", "async()"],
+                "correct_answer": "new Promise()"
+            },
+            {
+                "question": "Which method is used to convert a JSON object to a string?",
+                "options": ["JSON.stringify()", "JSON.parse()", "toJSON()", "JSON.convert()"],
+                "correct_answer": "JSON.stringify()"
+            },
+            {
+                "question": "Which statement can be used to iterate over the properties of an object?",
+                "options": ["for...in", "for...of", "foreach", "while"],
+                "correct_answer": "for...in"
+            },
+            {
+                "question": "Which JavaScript method is used to execute a function after a specified time?",
+                "options": ["setTimeout()", "setInterval()", "delay()", "wait()"],
+                "correct_answer": "setTimeout()"
+            },
+            {
+                "question": "Which method is used to filter elements from an array?",
+                "options": ["filter()", "map()", "reduce()", "sort()"],
+                "correct_answer": "filter()"
+            },
+            {
+                "question": "What is the purpose of the 'async' keyword in JavaScript?",
+                "options": ["To define an asynchronous function", "To make a variable asynchronous", "To pause a function", "To call a function asynchronously"],
+                "correct_answer": "To define an asynchronous function"
+            },
+            {
+                "question": "What is the purpose of 'await' in JavaScript?",
+                "options": ["To wait for an asynchronous operation to complete", "To pause the function", "To stop the function", "To throw an error"],
+                "correct_answer": "To wait for an asynchronous operation to complete"
+            },
+            {
+                "question": "What is the output of 'console.log(typeof null)'?",
+                "options": ["object", "null", "undefined", "function"],
+                "correct_answer": "object"
+            }
+        ]
+    }
+}

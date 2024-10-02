@@ -1,16 +1,16 @@
 // src/App.js
-import react from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "../pages/Home";
-import Quiz from "../components/Quiz";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Update import
+import Home from "./pages/Home";
+import Quiz from "./pages/Quiz";
 
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/quiz" component={Quiz} />
-      </Switch>
+      <Routes> {/* Change Switch to Routes */}
+        <Route path="/" element={<Home />} /> {/* Update Route syntax */}
+        <Route path="/quiz" element={<Quiz />} /> {/* Update Route syntax */}
+      </Routes>
     </Router>
   );
 };
