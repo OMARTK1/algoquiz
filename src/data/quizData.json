@@ -54,7 +54,7 @@
         ],
         "intermediate": [
             {
-                "question": "What is the output of the following code? \n#include<stdio.h>\nint main() { int x = 5; printf('%d', x++); return 0; }",
+                "question": "What is the output of the following code? \n#include<stdio.h>\nint main() { int x = 5; printf(\"%d\", x++); return 0; }",
                 "options": [
                     "5",
                     "6",
@@ -196,7 +196,7 @@
                 "correct_answer": "Heap"
             },
             {
-                "question": "What is the output of the following code? \n#include<stdio.h>\nint main() { char arr[] = 'hello'; printf('%s', arr); return 0; }",
+                "question": "What is the output of the following code? \n#include<stdio.h>\nint main() { char arr[] = \"hello\"; printf(\"%s\", arr); return 0; }",
                 "options": [
                     "hello",
                     "h",
@@ -266,7 +266,7 @@
                 "correct_answer": "It leads to undefined behavior"
             },
             {
-                "question": "What is the output of the following code? \n#include<stdio.h>\nint main() { int x = 5, y = 6; printf('%d', x+++y); return 0; }",
+                "question": "What is the output of the following code? \n#include<stdio.h>\nint main() { int x = 5, y = 6; printf(\"%d\", x+++y); return 0; }",
                 "options": [
                     "Compile error",
                     "11",
@@ -284,6 +284,26 @@
                     "None of the above"
                 ],
                 "correct_answer": "calloc() initializes the allocated memory to zero, while malloc() leaves it uninitialized"
+            },
+            {
+                "question": "In C, what is the purpose of the 'restrict' keyword?",
+                "options": [
+                    "It tells the compiler that the pointer is the only way to access the object in memory",
+                    "It restricts the variable scope",
+                    "It prevents function recursion",
+                    "None of the above"
+                ],
+                "correct_answer": "It tells the compiler that the pointer is the only way to access the object in memory"
+            },
+            {
+                "question": "What does 'static' mean when used with a global variable in C?",
+                "options": [
+                    "The variable is only accessible within the file it is declared",
+                    "The variable is shared across all files",
+                    "It makes the variable constant",
+                    "None of the above"
+                ],
+                "correct_answer": "The variable is only accessible within the file it is declared"
             }
         ]
     },
@@ -572,6 +592,26 @@
                     "None of the above"
                 ],
                 "correct_answer": "Proper acquisition and release of resources"
+            },
+            {
+                "question": "What does the 'nonlocal' keyword do in Python?",
+                "options": [
+                    "It allows a variable to be modified in a nested function",
+                    "It declares a global variable",
+                    "It prevents variable shadowing",
+                    "None of the above"
+                ],
+                "correct_answer": "It allows a variable to be modified in a nested function"
+            },
+            {
+                "question": "Which of the following is a valid way to create a class method in Python?",
+                "options": [
+                    "Using @classmethod decorator",
+                    "Using @staticmethod decorator",
+                    "Defining the method inside a class without decorators",
+                    "All of the above"
+                ],
+                "correct_answer": "Using @classmethod decorator"
             }
         ]
     },
@@ -720,6 +760,26 @@
                 "question": "What is the output of 'console.log(typeof null)'?",
                 "options": ["object", "null", "undefined", "function"],
                 "correct_answer": "object"
+            },
+            {
+                "question": "What is the purpose of the 'bind()' method in JavaScript?",
+                "options": [
+                    "To create a new function with a specific 'this' value",
+                    "To invoke a function immediately",
+                    "To add event listeners",
+                    "To loop through arrays"
+                ],
+                "correct_answer": "To create a new function with a specific 'this' value"
+            },
+            {
+                "question": "What will be the output of 'console.log(0.1 + 0.2 === 0.3)' in JavaScript?",
+                "options": [
+                    "false",
+                    "true",
+                    "undefined",
+                    "NaN"
+                ],
+                "correct_answer": "false"
             }
         ]
     }
