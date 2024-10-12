@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Update import
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
-import Results from "./pages/results";
+import Results from "./pages/Results";
 
 const App = () => {
   console.log("Rendering App"); // This will log when the component mounts or updates
