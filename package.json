@@ -4,7 +4,7 @@
   "description": "AlgoQuiz is an interactive quiz application designed to help users learn and test their knowledge in programming and computer science.",
   "main": "index.js",
   "scripts": {
-    "start": "CHOKIDAR_USEPOLLING=true CHOKIDAR_INTERVAL=100 react-scripts start --trace-deprecations",
+    "start": "react-scripts start",
     "build": "react-scripts build --production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

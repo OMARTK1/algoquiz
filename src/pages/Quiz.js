@@ -1,9 +1,11 @@
+// src/pages/Quiz.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import quizData from '../data/quizData.json'; // Keeping this for custom data
-import Timer from '../components/Timer'; // Importing Timer component
+import Timer from '../components/Timer';
+import quizData from '../data/quizData.json';
+import BackNavigation from '../components/BackNavigation'; // Import BackNavigation
 
 const Quiz = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -13,8 +15,8 @@ const Quiz = () => {
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [timeUp, setTimeUp] = useState(false); // State for when the time is up
-  const [timerDuration, setTimerDuration] = useState(0); // Duration for the timer in minutes
+  const [timeUp, setTimeUp] = useState(false);
+  const [timerDuration, setTimerDuration] = useState(5);
   const navigate = useNavigate();
 
   const categories = quizData ? Object.keys(quizData).concat("Computer Science") : [];
@@ -24,22 +26,12 @@ const Quiz = () => {
     setSelectedLevel(null);
     setSubmitted(false);
     setScore(0);
-    setTimerDuration(0); // Reset timer duration when category is selected
   };
 
   const handleLevelSelect = (level) => {
     setSelectedLevel(level);
     setSubmitted(false);
     setScore(0);
-    
-    // Set timer duration (in minutes)
-    if (level === "easy") {
-      setTimerDuration(5); // 5 minute
-    } else if (level === "intermediate") {
-      setTimerDuration(5); // 5 minutes
-    } else if (level === "advanced") {
-      setTimerDuration(5); // 5 minutes
-    }
   };
 
   useEffect(() => {
@@ -50,7 +42,7 @@ const Quiz = () => {
         if (["C", "Python", "JavaScript"].includes(selectedCategory)) {
           const customQuestions = quizData[selectedCategory][selectedLevel];
           setQuestions(customQuestions);
-          setAnswers({}); // Reset answers
+          setAnswers({});
         } else if (selectedCategory === "Computer Science") {
           const difficulty = selectedLevel === "easy" ? "easy" : selectedLevel === "intermediate" ? "medium" : "hard";
           try {
@@ -59,10 +51,10 @@ const Quiz = () => {
             if (data.results && data.results.length > 0) {
               setQuestions(data.results.map((question) => ({
                 question: question.question,
-                options: [...question.incorrect_answers, question.correct_answer].sort(), // Shuffle options
+                options: [...question.incorrect_answers, question.correct_answer].sort(),
                 correct_answer: question.correct_answer,
               })));
-              setAnswers({}); // Reset answers
+              setAnswers({});
             } else {
               console.error('No questions found for Computer Science');
               setQuestions([]);
@@ -93,9 +85,16 @@ const Quiz = () => {
       }
     });
     setScore(newScore);
-    setSubmitted(true);
     
-    navigate('/results', { state: { score: newScore, total: questions.length } });
+    // Navigate to Results page and pass data
+    navigate('/results', {
+      state: {
+        score: newScore,
+        total: questions.length,
+        questions,
+        answers,
+      },
+    });
   };
 
   const handleTimeUp = () => {
@@ -108,6 +107,13 @@ const Quiz = () => {
       <Header />
       <main>
         <h2>Quiz Page</h2>
+        
+        {/* Use BackNavigation here to provide navigation options */}
+        <BackNavigation
+          resetCategory={selectedCategory && !selectedLevel ? () => setSelectedCategory(null) : null}
+          resetLevel={selectedCategory && selectedLevel ? () => setSelectedLevel(null) : null}
+        />
+
         {!selectedCategory ? (
           <div>
             <h3>Select a Category</h3>
@@ -125,78 +131,53 @@ const Quiz = () => {
           <div>
             <h3>Select a Level for {selectedCategory}</h3>
             <ul>
-              {selectedCategory === "Computer Science" ? (
-                <>
-                  <li>
-                    <button onClick={() => handleLevelSelect("easy")}>Easy</button>
-                  </li>
-                  <li>
-                    <button onClick={() => handleLevelSelect("intermediate")}>Intermediate</button>
-                  </li>
-                  <li>
-                    <button onClick={() => handleLevelSelect("advanced")}>Advanced</button>
-                  </li>
-                </>
-              ) : (
-                Object.keys(quizData[selectedCategory]).map((level) => (
-                  <li key={level}>
-                    <button onClick={() => handleLevelSelect(level)}>
-                      {level}
-                    </button>
-                  </li>
-                ))
-              )}
+              {["easy", "intermediate", "advanced"].map((level) => (
+                <li key={level}>
+                  <button onClick={() => handleLevelSelect(level)}>
+                    {level}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         ) : (
-          <div>
-            <h3>{selectedCategory} - {selectedLevel} Quiz</h3>
+          <>
             {loading ? (
               <p>Loading...</p>
+            ) : questions.length > 0 ? (
+              <>
+                <Timer duration={timerDuration} onTimeUp={handleTimeUp} /> {/* Timer Component */}
+                <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+                  <ul>
+                    {questions.map((question, index) => (
+                      <li key={index}>
+                        <h3>{question.question}</h3>
+                        <ul>
+                          {question.options.map((option, optionIndex) => (
+                            <li key={optionIndex}>
+                              <input
+                                type="radio"
+                                name={`question-${index}`}
+                                id={`correct_answer-${index}-${optionIndex}`}
+                                value={option}
+                                onChange={() => handleAnswerChange(index, option)}
+                              />
+                              <label htmlFor={`correct_answer-${index}-${optionIndex}`}>
+                                {option}
+                              </label>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    ))}
+                  </ul>
+                  <button type="submit" disabled={timeUp}>Submit Answers</button> {/* Disable submit if time is up */}
+                </form>
+              </>
             ) : (
-              questions.length > 0 ? (
-                <>
-                  <Timer duration={timerDuration} onTimeUp={handleTimeUp} /> {/* Timer Component */}
-                  <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-                    <ul>
-                      {questions.map((question, index) => (
-                        <li key={index}>
-                          <h3>{question.question}</h3>
-                          <ul>
-                            {question.options.map((option, optionIndex) => (
-                              <li key={optionIndex}>
-                                <input
-                                  type="radio"
-                                  name={`question-${index}`}
-                                  id={`correct_answer-${index}-${optionIndex}`}
-                                  value={option}
-                                  onChange={() => handleAnswerChange(index, option)}
-                                  disabled={submitted || timeUp} // Disable if submitted or time is up
-                                />
-                                <label
-                                  htmlFor={`correct_answer-${index}-${optionIndex}`}
-                                  style={
-                                    submitted && option === question.correct_answer
-                                      ? { color: 'green' }
-                                      : {}
-                                  }
-                                >
-                                  {option}
-                                </label>
-                              </li>
-                            ))}
-                          </ul>
-                        </li>
-                      ))}
-                    </ul>
-                    <button type="submit" disabled={timeUp}>Submit Answers</button> {/* Disable submit if time is up */}
-                  </form>
-                </>
-              ) : (
-                <p>No questions available. Please select a different category or level.</p>
-              )
+              <p>No questions available. Please select a different category or level.</p>
             )}
-          </div>
+          </>
         )}
       </main>
       <Footer />
