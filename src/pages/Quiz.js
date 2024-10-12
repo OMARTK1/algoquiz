@@ -1,13 +1,14 @@
-// src/pages/Quiz.js
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Timer from '../components/Timer';
-import quizData from '../data/quizData.json';
+import quizData from '../data/quizData.json'; // Importing custom quiz data
+import Timer from '../components/Timer'; // Importing Timer component
+import Continue from '../components/Continue'; // Importing the Continue button component
 import BackNavigation from '../components/BackNavigation'; // Import BackNavigation
 
 const Quiz = () => {
+  const location = useLocation(); // Get location to retrieve navigation state
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedLevel, setSelectedLevel] = useState(null);
   const [questions, setQuestions] = useState([]);
@@ -15,58 +16,80 @@ const Quiz = () => {
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [timeUp, setTimeUp] = useState(false);
-  const [timerDuration, setTimerDuration] = useState(5);
+  const [timerDuration, setTimerDuration] = useState(5); // Set timer duration to 5 minutes
   const navigate = useNavigate();
 
+  // Categories and levels
   const categories = quizData ? Object.keys(quizData).concat("Computer Science") : [];
+  const levels = ["easy", "intermediate", "advanced"];
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    setSelectedLevel(null);
-    setSubmitted(false);
-    setScore(0);
-  };
+  // Fetch quiz data when category and level are selected
+  const fetchQuizData = async () => {
+    if (selectedCategory && selectedLevel) {
+      setLoading(true);
 
-  const handleLevelSelect = (level) => {
-    setSelectedLevel(level);
-    setSubmitted(false);
-    setScore(0);
-  };
-
-  useEffect(() => {
-    const fetchQuizData = async () => {
-      if (selectedCategory && selectedLevel) {
-        setLoading(true);
-
+      try {
         if (["C", "Python", "JavaScript"].includes(selectedCategory)) {
           const customQuestions = quizData[selectedCategory][selectedLevel];
           setQuestions(customQuestions);
           setAnswers({});
         } else if (selectedCategory === "Computer Science") {
           const difficulty = selectedLevel === "easy" ? "easy" : selectedLevel === "intermediate" ? "medium" : "hard";
-          try {
-            const apiQuestions = await fetch(`https://opentdb.com/api.php?amount=10&category=18&difficulty=${difficulty}`);
-            const data = await apiQuestions.json();
-            if (data.results && data.results.length > 0) {
-              setQuestions(data.results.map((question) => ({
-                question: question.question,
-                options: [...question.incorrect_answers, question.correct_answer].sort(),
-                correct_answer: question.correct_answer,
-              })));
-              setAnswers({});
+          let attempts = 0;
+          const maxAttempts = 5;
+
+          while (attempts < maxAttempts) {
+            const response = await fetch(`https://opentdb.com/api.php?amount=10&category=18&difficulty=${difficulty}`);
+            if (response.ok) {
+              const data = await response.json();
+              if (data.results && data.results.length > 0) {
+                setQuestions(data.results.map((question) => ({
+                  question: question.question,
+                  options: [...question.incorrect_answers, question.correct_answer].sort(),
+                  correct_answer: question.correct_answer,
+                })));
+                setAnswers({});
+                break; // Successful fetch, exit the loop
+              } else {
+                console.error('No questions found for Computer Science');
+                setQuestions([]);
+                break; // Exit loop if no questions
+              }
             } else {
-              console.error('No questions found for Computer Science');
-              setQuestions([]);
+              if (response.status === 429) {
+                console.error('Too many requests. Retrying...');
+                attempts++;
+                await new Promise(res => setTimeout(res, Math.pow(2, attempts) * 1000)); // Exponential backoff
+              } else {
+                throw new Error('Network response was not ok');
+              }
             }
-          } catch (error) {
-            console.error('Error fetching questions:', error);
+          }
+
+          if (attempts === maxAttempts) {
+            console.error('Failed to fetch questions after multiple attempts.');
+            setQuestions([]); // Optionally clear questions
           }
         }
+      } catch (error) {
+        console.error('Error fetching questions:', error);
+      } finally {
         setLoading(false);
       }
-    };
+    }
+  };
 
+  // Handle setting category if coming back from retry (from the Results page)
+  useEffect(() => {
+    const quizState = location.state;
+    if (quizState?.category) {
+      setSelectedCategory(quizState.category); // Automatically set the category from the navigation state
+      setSelectedLevel(quizState.level); // Automatically set the level from the navigation state
+      setTimerDuration(5); // Set timer duration to 5 minutes
+    }
+  }, [location.state]);
+
+  useEffect(() => {
     fetchQuizData();
   }, [selectedCategory, selectedLevel]);
 
@@ -79,28 +102,28 @@ const Quiz = () => {
 
   const handleSubmit = () => {
     let newScore = 0;
+    // Calculate score
     questions.forEach((question, index) => {
       if (answers[index] === question.correct_answer) {
         newScore += 1;
       }
     });
-    setScore(newScore);
     
-    // Navigate to Results page and pass data
-    navigate('/results', {
-      state: {
-        score: newScore,
-        total: questions.length,
-        questions,
-        answers,
-      },
+    setScore(newScore);
+    setSubmitted(true);
+    
+    // Navigate to results page with state
+    navigate('/results', { 
+      state: { 
+        score: newScore, 
+        total: questions.length, 
+        questions, // Pass the questions here
+        answers,   // Pass the answers here
+        category: selectedCategory, 
+        level: selectedLevel // Include the level here
+      } 
     });
-  };
-
-  const handleTimeUp = () => {
-    setTimeUp(true);
-    handleSubmit(); // Automatically submit the quiz when time is up
-  };
+  };  
 
   return (
     <div>
@@ -108,7 +131,7 @@ const Quiz = () => {
       <main>
         <h2>Quiz Page</h2>
         
-        {/* Use BackNavigation here to provide navigation options */}
+        {/* Include BackNavigation component */}
         <BackNavigation
           resetCategory={selectedCategory && !selectedLevel ? () => setSelectedCategory(null) : null}
           resetLevel={selectedCategory && selectedLevel ? () => setSelectedLevel(null) : null}
@@ -120,7 +143,7 @@ const Quiz = () => {
             <ul>
               {categories.map((category) => (
                 <li key={category}>
-                  <button onClick={() => handleCategorySelect(category)}>
+                  <button onClick={() => setSelectedCategory(category)}>
                     {category}
                   </button>
                 </li>
@@ -131,53 +154,66 @@ const Quiz = () => {
           <div>
             <h3>Select a Level for {selectedCategory}</h3>
             <ul>
-              {["easy", "intermediate", "advanced"].map((level) => (
-                <li key={level}>
-                  <button onClick={() => handleLevelSelect(level)}>
-                    {level}
-                  </button>
-                </li>
-              ))}
+              {selectedCategory === "Computer Science" ? (
+                <>
+                  {levels.map((level) => (
+                    <li key={level}>
+                      <button onClick={() => setSelectedLevel(level)}>{level.charAt(0).toUpperCase() + level.slice(1)}</button>
+                    </li>
+                  ))}
+                </>
+              ) : (
+                Object.keys(quizData[selectedCategory]).map((level) => (
+                  <li key={level}>
+                    <button onClick={() => setSelectedLevel(level)}>
+                      {level}
+                    </button>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
         ) : (
-          <>
+          <div>
+            <h3>{selectedCategory} - {selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Quiz</h3>
             {loading ? (
               <p>Loading...</p>
-            ) : questions.length > 0 ? (
-              <>
-                <Timer duration={timerDuration} onTimeUp={handleTimeUp} /> {/* Timer Component */}
-                <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-                  <ul>
-                    {questions.map((question, index) => (
-                      <li key={index}>
-                        <h3>{question.question}</h3>
-                        <ul>
-                          {question.options.map((option, optionIndex) => (
-                            <li key={optionIndex}>
-                              <input
-                                type="radio"
-                                name={`question-${index}`}
-                                id={`correct_answer-${index}-${optionIndex}`}
-                                value={option}
-                                onChange={() => handleAnswerChange(index, option)}
-                              />
-                              <label htmlFor={`correct_answer-${index}-${optionIndex}`}>
-                                {option}
-                              </label>
-                            </li>
-                          ))}
-                        </ul>
-                      </li>
-                    ))}
-                  </ul>
-                  <button type="submit" disabled={timeUp}>Submit Answers</button> {/* Disable submit if time is up */}
-                </form>
-              </>
             ) : (
-              <p>No questions available. Please select a different category or level.</p>
+              questions.length > 0 ? (
+                <>
+                  <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+                    <ul>
+                      {questions.map((question, index) => (
+                        <li key={index}>
+                          <h3>{question.question}</h3>
+                          <ul>
+                            {question.options.map((option, optionIndex) => (
+                              <li key={optionIndex}>
+                                <input
+                                  type="radio"
+                                  name={`question-${index}`}
+                                  id={`question-${index}-option-${optionIndex}`}
+                                  value={option}
+                                  onChange={() => handleAnswerChange(index, option)}
+                                  disabled={submitted} // Disable if submitted
+                                />
+                                <label htmlFor={`question-${index}-option-${optionIndex}`}>
+                                  {option}
+                                </label>
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      ))}
+                    </ul>
+                    <button type="submit" disabled={submitted}>Submit Answers</button>
+                  </form>
+                </>
+              ) : (
+                <p>No questions available. Please select a different category or level.</p>
+              )
             )}
-          </>
+          </div>
         )}
       </main>
       <Footer />

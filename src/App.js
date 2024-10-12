@@ -1,6 +1,5 @@
-// src/App.js
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Update import
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
@@ -9,11 +8,12 @@ const App = () => {
   console.log("Rendering App"); // This will log when the component mounts or updates
   return (
     <Router>
-      <Routes> {/* Change Switch to Routes */}
-        <Route path="/" element={<Home />} /> {/* Update Route syntax */}
-        <Route path="/quiz" element={<Quiz />} /> {/* Update Route syntax */}
-        <Route path="/results" element={<Results />} /> {/* Update Route syntax */}
-      </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/results" element={<Results />} />
+        <Route path="/results/:category/:level" element={<Results />} /> 
+        </Routes>
     </Router>
   );
 };
