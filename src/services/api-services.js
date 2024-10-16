@@ -6,8 +6,7 @@ const fetchQuestions = async (difficulty) => {
       const response = await fetch(`https://opentdb.com/api.php?amount=10&category=18&difficulty=${difficulty}&type=multiple`);
       if (!response.ok) {
         if (response.status === 429) {
-          // Handle rate limiting (optional: add a delay before retry)
-          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second
+          await new Promise(resolve => setTimeout(resolve, 1000));
         } else {
           throw new Error('Network response was not ok');
         }
