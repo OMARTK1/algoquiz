@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Continue = ({ selectedCategory, selectedLevel, navigate }) => {
-  const categories = ["C", "Python", "JavaScript", "Computer Science"]; // Added Computer Science
+  const categories = ["C", "Python", "JavaScript", "Computer Science"];
   const levels = ["easy", "intermediate", "advanced"];
 
   // Function to handle Continue button logic

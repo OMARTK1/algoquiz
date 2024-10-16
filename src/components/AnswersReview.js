@@ -1,4 +1,3 @@
-// src/components/AnswersReview.js
 import React from 'react';
 
 const AnswersReview = ({ questions, answers }) => {

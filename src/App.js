@@ -5,7 +5,7 @@ import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
 
 const App = () => {
-  console.log("Rendering App"); // This will log when the component mounts or updates
+  console.log("Rendering App");
   return (
     <Router>
       <Routes>
