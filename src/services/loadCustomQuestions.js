@@ -1,8 +1,9 @@
 import quizData from '../data/quizData.json';
 
 export const loadCustomQuestions = (category) => {
-  if (!quizData[category]) {
+  const questions = quizData[category];
+  if (!questions) {
     throw new Error(`No custom questions found for category: ${category}`);
   }
-  return quizData[category];
+  return questions;
 };

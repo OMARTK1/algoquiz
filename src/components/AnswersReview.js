@@ -1,10 +1,7 @@
 import React from 'react';
 import '../styles/AnswersReview.css';
 
-const AnswersReview = ({ questions, answers }) => {
-  console.log('Questions:', questions); // Debugging log
-  console.log('Answers:', answers);      // Debugging log
-
+const AnswersReview = React.memo(({ questions, answers }) => {
   return (
     <div className="container">
       <h2 className="title">Review Your Answers</h2>
@@ -37,6 +34,6 @@ const AnswersReview = ({ questions, answers }) => {
       </ul>
     </div>
   );
-};
+});
 
 export default AnswersReview;

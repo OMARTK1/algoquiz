@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
 
-const Footer = () => {
+const Footer = React.memo(() => {
   useEffect(() => {
     const footer = document.getElementById('footer');
 
@@ -37,6 +37,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;

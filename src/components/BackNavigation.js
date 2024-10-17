@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/BackNavigation.css';
 
-const BackNavigation = ({ resetCategory, resetLevel }) => {
+const BackNavigation = React.memo(({ resetCategory, resetLevel }) => {
   const navigate = useNavigate();
 
   return (
@@ -22,6 +22,6 @@ const BackNavigation = ({ resetCategory, resetLevel }) => {
       )}
     </div>
   );
-};
+});
 
 export default BackNavigation;

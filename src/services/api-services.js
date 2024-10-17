@@ -1,31 +1,31 @@
 const fetchQuestions = async (difficulty) => {
-  let attempt = 0;
-  const maxAttempts = 3; // Maximum number of attempts
-  while (attempt < maxAttempts) {
+  const maxAttempts = 3;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
       const response = await fetch(`https://opentdb.com/api.php?amount=10&category=18&difficulty=${difficulty}&type=multiple`);
-      if (!response.ok) {
-        if (response.status === 429) {
-          await new Promise(resolve => setTimeout(resolve, 1000));
-        } else {
-          throw new Error('Network response was not ok');
-        }
+      
+      if (response.status === 429) {
+        console.warn(`Rate limit exceeded. Retrying in 1 second... (Attempt ${attempt})`);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        continue;
       }
+
+      if (!response.ok) {
+        throw new Error(`Network error: ${response.statusText}`);
+      }
+
       const data = await response.json();
 
-      // Format the data to match the quizData structure
-      const formattedQuestions = data.results.map((item) => ({
+      return data.results.map(item => ({
         question: item.question,
         options: [...item.incorrect_answers, item.correct_answer].sort(),
         correct_answer: item.correct_answer,
       }));
 
-      return formattedQuestions;
     } catch (error) {
-      console.error(`Attempt ${attempt + 1}: ${error}`);
-      attempt += 1;
+      console.error(`Attempt ${attempt} failed: ${error}`);
       if (attempt === maxAttempts) {
-        throw error; // Re-throw the last error if max attempts reached
+        throw new Error(`Failed after ${maxAttempts} attempts: ${error.message}`);
       }
     }
   }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import '../styles/Header.css';
 
-const Header = () => {
+const Header = React.memo(() => {
   const [isNavVisible, setNavVisible] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -28,7 +28,7 @@ const Header = () => {
       </div>
       <div className="logo-container">
         <Link to="/">
-          <img src={require('../assets/Logo_algoquiz.png')} alt="AlgoQuiz" className="app-logo" />
+          <img src={require('../assets/Logo_algoquiz.webp')} alt="AlgoQuiz" className="app-logo" />
         </Link>
       </div>
       {isSmallScreen && (
@@ -46,6 +46,6 @@ const Header = () => {
       </nav>
     </header>
   );
-};
+});
 
 export default Header;

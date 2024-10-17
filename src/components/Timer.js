@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Timer.css';
 
-const Timer = ({ duration, onTimeUp, setTimeSpent }) => {
-   // Convert minutes to seconds
+const Timer = React.memo(({ duration, onTimeUp, setTimeSpent }) => {
   const [timeLeft, setTimeLeft] = useState(duration * 60);
 
   useEffect(() => {
@@ -12,14 +11,13 @@ const Timer = ({ duration, onTimeUp, setTimeSpent }) => {
     }
 
     const interval = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
+      setTimeLeft(prevTime => prevTime - 1);
     }, 1000);
 
     return () => clearInterval(interval);
   }, [timeLeft, onTimeUp]);
 
   useEffect(() => {
-    // Calculate and update the time spent
     setTimeSpent(duration * 60 - timeLeft);
   }, [timeLeft, duration, setTimeSpent]);
 
@@ -35,6 +33,6 @@ const Timer = ({ duration, onTimeUp, setTimeSpent }) => {
       <h3>{formatTime(timeLeft)}</h3>
     </div>
   );
-};
+});
 
 export default Timer;

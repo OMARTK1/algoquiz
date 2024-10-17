@@ -1,9 +1,31 @@
-import React from "react";
+// src/pages/Terms.js
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import '../styles/Terms.css';
+import Lottie from 'lottie-react';
+import loadingAnimation from '../assets/animations/Animation - Loading.json';
 
 const TermsAndConditions = () => {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1000); // Simulate loading time
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="loading-container">
+                <Lottie animationData={loadingAnimation} loop={true} />
+                <p>Loading Terms and Conditions...</p>
+            </div>
+        );
+    }
+
     return (
         <div className="terms-and-conditions-page">
             <Header />
@@ -21,36 +43,16 @@ const TermsAndConditions = () => {
                 <h3>Definitions</h3>
                 <p>For the purposes of these Terms and Conditions:</p>
                 <ul>
-                    <li>
-                        <strong>Application</strong> means the software program provided by the Company downloaded by You on any electronic device, named AlgoQuiz.
-                    </li>
-                    <li>
-                        <strong>Application Store</strong> means the digital distribution service operated and developed by Apple Inc. (Apple App Store) or Google Inc. (Google Play Store) in which the Application has been downloaded.
-                    </li>
-                    <li>
-                        <strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a party.
-                    </li>
-                    <li>
-                        <strong>Country</strong> refers to: Morocco.
-                    </li>
-                    <li>
-                        <strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to AlgoQuiz.
-                    </li>
-                    <li>
-                        <strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.
-                    </li>
-                    <li>
-                        <strong>Service</strong> refers to the Application.
-                    </li>
-                    <li>
-                        <strong>Terms and Conditions</strong> (also referred as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service.
-                    </li>
-                    <li>
-                        <strong>Third-party Social Media Service</strong> means any services or content provided by a third-party that may be displayed, included or made available by the Service.
-                    </li>
-                    <li>
-                        <strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
-                    </li>
+                    <li><strong>Application</strong> means the software program provided by the Company downloaded by You on any electronic device, named AlgoQuiz.</li>
+                    <li><strong>Application Store</strong> means the digital distribution service operated by Apple Inc. or Google Inc. in which the Application has been downloaded.</li>
+                    <li><strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a party.</li>
+                    <li><strong>Country</strong> refers to: Morocco.</li>
+                    <li><strong>Company</strong> refers to AlgoQuiz.</li>
+                    <li><strong>Device</strong> means any device that can access the Service such as a computer, cellphone, or digital tablet.</li>
+                    <li><strong>Service</strong> refers to the Application.</li>
+                    <li><strong>Terms and Conditions</strong> (also referred to as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service.</li>
+                    <li><strong>Third-party Social Media Service</strong> means any services or content provided by a third-party that may be displayed, included or made available by the Service.</li>
+                    <li><strong>You</strong> means the individual accessing or using the Service.</li>
                 </ul>
 
                 <h2>Acknowledgment</h2>
@@ -65,10 +67,10 @@ const TermsAndConditions = () => {
 
                 <h2>Links to Other Websites</h2>
                 <p>
-                    Our Service may contain links to third-party web sites or services that are not owned or controlled by the Company.
+                    Our Service may contain links to third-party websites or services that are not owned or controlled by the Company.
                 </p>
                 <p>
-                    The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party web sites or services.
+                    The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services.
                 </p>
 
                 <h2>Termination</h2>
@@ -121,11 +123,13 @@ const TermsAndConditions = () => {
                 <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
                 <ul>
                     <li>
-                        By email: omarelyaz@gmail.com
-                        By email: maryembenhaida9@gmail.com
+                        By email: <a href="mailto:omarelyaz@gmail.com">omarelyaz@gmail.com</a>
                     </li>
                     <li>
-                        By visiting this page on our website: <a href="https://github.com/OMARTK1/algoquiz" rel="external nofollow noopener" target="_blank">https://github.com/OMARTK1/algoquiz</a> or <a href="https://github.com/Mery9yuka" rel="external nofollow noopener" target="_blank">https://github.com/Mery9yuka</a>
+                        By email: <a href="mailto:maryembenhaida9@gmail.com">maryembenhaida9@gmail.com</a>
+                    </li>
+                    <li>
+                        By visiting this page on our website: <a href="https://github.com/OMARTK1/algoquiz" target="_blank" rel="noopener noreferrer">https://github.com/OMARTK1/algoquiz</a>
                     </li>
                 </ul>
             </main>

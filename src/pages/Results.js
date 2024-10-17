@@ -39,8 +39,8 @@ const Results = () => {
   }, [score, total, timeSpent, selectedCategory, selectedLevel]);
 
   const handleViewAnswers = () => {
-    console.log('Questions in Results:', questions); // Debugging log
-    console.log('Answers in Results:', answers);     // Debugging log
+    console.log('Questions in Results:', questions);
+    console.log('Answers in Results:', answers);
     setShowAnswers(true);
   };
 
@@ -73,7 +73,7 @@ const Results = () => {
       <Background />
       <Header />
       
-      {loading ? ( // Show loading animation while loading
+      {loading ? (
         <div className="loading-container">
           <Lottie animationData={loadingAnimation} loop={true} />
           <p>Loading results...</p>
@@ -82,7 +82,6 @@ const Results = () => {
         <main>
           <h1>Quiz Results</h1>
 
-          {/* Congrats animation*/}
           <div className="congrats-animation">
             <Lottie animationData={congratsAnimation} loop={true} style={{ width: '80px', height: '80px' }} />
           </div>
@@ -96,7 +95,6 @@ const Results = () => {
           {(nextLevel || nextCategory) && <Continue onContinue={handleContinue} />}
           <button className="results-page-button" onClick={() => navigate('/')}>Back Home</button>
 
-          {/* Conditionally render the AnswersReview component based on showAnswers state */}
           {showAnswers && (
             <AnswersReview questions={questions} answers={answers} />
           )}

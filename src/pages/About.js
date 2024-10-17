@@ -14,7 +14,6 @@ const About = () => {
         const timer = setTimeout(() => {
             setLoading(false);
         }, 1000);
-
         return () => clearTimeout(timer);
     }, []);
 
@@ -30,7 +29,7 @@ const About = () => {
     return (
         <div className="about-page">
             <Header />
-            <main>                
+            <main>
                 <div className="about-lottie-container">
                     <Lottie animationData={aboutAnimation} loop={true} />
                 </div>
@@ -38,18 +37,17 @@ const About = () => {
 
                 <h3>Our Founder</h3>
                 <p id="Liv_Founder">
-                    Omar Elyazidi
-                    Omar is a passionate developer and educator with a background in computer science and software engineering. He has a keen interest in algorithm design and online education, striving to create engaging and effective learning experiences for users. Omar founded AlgoQuiz to provide a platform where users can test and improve their algorithm skills in a fun and interactive way.
+                    Omar Elyazidi is a passionate developer and educator with a background in computer science and software engineering. He strives to create engaging learning experiences for users through AlgoQuiz, a platform designed for testing and improving algorithm skills.
                 </p>
 
                 <h3>Company History</h3>
                 <p id="Liv_History">
-                    AlgoQuiz was founded in 2024 by Omar Elyazidi as a response to the growing need for accessible educational tools in the field of computer science. Recognizing that many learners struggle with the concepts of algorithms and data structures, Omar aimed to create an engaging platform that makes learning these concepts easier. The app quickly gained traction among students and professionals alike, evolving through user feedback and the incorporation of new features to enhance the learning experience.
+                    Founded in 2024, AlgoQuiz addresses the need for accessible educational tools in computer science, making algorithm learning engaging and effective through user feedback.
                 </p>
 
                 <h3>Our Mission</h3>
                 <p id="Liv_Mission">
-                    At AlgoQuiz, our mission is to empower learners by providing a comprehensive platform for mastering algorithms and data structures. We believe that everyone should have access to quality educational resources, and our goal is to create a supportive community where users can learn, practice, and share knowledge. By combining interactive quizzes with a user-friendly interface, we aim to make learning about algorithms not just educational, but also enjoyable.
+                    At AlgoQuiz, we empower learners to master algorithms and data structures, fostering a supportive community through interactive quizzes and resources.
                 </p>
 
                 <h3>Meet Our Team</h3>
