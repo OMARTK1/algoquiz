@@ -1,0 +1,144 @@
+/* styles/About.css */
+.about-page main {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 20px auto;
+  }
+  
+  .about-page section {
+    margin-bottom: 20px;
+  }
+  
+  .about-page h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .about-page p {
+    font-family: ui-sans-serif;
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  /* Button Styling */
+  .about-page button {
+    background-image: linear-gradient(135deg, #3f51b5, #2196f3);
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .about-page button:hover {
+    background-image: linear-gradient(135deg, #303f9f, #1976d2);
+    transform: scale(1.1);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .about-page main {
+      max-width: 1000px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .about-page main {
+      max-width: 750px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .about-page main {
+      max-width: 500px;
+      padding: 10px 20px;
+    }
+  
+    .about-page h1 {
+      font-size: large;
+    }
+  
+    .about-page p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .about-page main {
+      max-width: 100%;
+      padding: 10px;
+    }
+  
+    .about-page h1 {
+      font-size: medium;
+    }
+  
+    .about-page p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Animations */
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .about-page h1 {
+    animation: slideIn 0.8s ease-out;
+  }
+  
+  /* Menu toggle button for small screens */
+  .menu-toggle {
+    display: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 10px !important;
+    font-size: 20px !important;
+    color: #fff !important;
+    cursor: pointer !important;
+  }
+  
+  .menu-toggle:hover {
+    background-color: rgba(25, 118, 210, 0.5) !important;
+    transform: scale(1.05) !important;
+  }
+  
+  /* Show menu toggle on small screens */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block !important;
+      width: fit-content !important;
+      margin-left: auto !important;
+      background: none !important;
+    }
+  }
+  
+  /* Lottie animation container styling */
+  .about-lottie-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .about-lottie-container svg {
+    width: 100px;
+    height: auto;
+  }
