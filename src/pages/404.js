@@ -1,3 +1,4 @@
+// src/pages/404.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -11,12 +12,12 @@ const NotFoundPage = () => {
         <div className="404" style={{ textAlign: 'center', marginTop: '50px' }}>
             <Header />
             <main>
-            <div className="lottie-container">
-            <Lottie animationData={animationData} loop={true} />
-            </div>
-            <h1>404 - Page Not Found</h1>
-            <p>Sorry, the page you are looking for does not exist.</p>
-            <Link to="/">Go to Homepage</Link>
+                <div className="lottie-container">
+                    <Lottie animationData={animationData} loop={true} />
+                </div>
+                <h1>404 - Page Not Found</h1>
+                <p>Sorry, the page you are looking for does not exist.</p>
+                <Link to="/">Go to Homepage</Link>
             </main>
             <Footer />
         </div>

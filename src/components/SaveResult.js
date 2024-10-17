@@ -1,7 +1,6 @@
-// src/components/SaveResult.js
 import React, { useEffect } from 'react';
 
-const SaveResult = ({ score, total, timeSpent, selectedCategory, selectedLevel }) => {
+const SaveResult = React.memo(({ score, total, timeSpent, selectedCategory, selectedLevel }) => {
   useEffect(() => {
     const results = JSON.parse(localStorage.getItem('quizResults')) || [];
     
@@ -20,10 +19,8 @@ const SaveResult = ({ score, total, timeSpent, selectedCategory, selectedLevel }
     );
 
     if (existingResultIndex > -1) {
-      // Update existing result
       results[existingResultIndex] = newResult;
     } else {
-      // Save the new result to local storage
       results.push(newResult);
     }
 
@@ -31,6 +28,6 @@ const SaveResult = ({ score, total, timeSpent, selectedCategory, selectedLevel }
   }, [score, total, timeSpent, selectedCategory, selectedLevel]);
 
   return null;
-};
+});
 
 export default SaveResult;

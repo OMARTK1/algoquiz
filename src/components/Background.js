@@ -1,14 +1,19 @@
-// src/components/BackgroundSwitcher.js
 import React from 'react';
-import imageBackground from '../assets/Cool-Background.jpg';
 import '../styles/Background.css';
 
-const Background = () => {
+// Use React.memo to prevent unnecessary re-renders
+const Background = React.memo(() => {
   return (
     <div className="background-container">
-      <img src={imageBackground} alt="Background" className="background-image" />
+      {/* Lazy load the image */}
+      <img 
+        src={require('../assets/Cool-Background.webp')} 
+        alt="Background" 
+        className="background-image" 
+        loading="lazy"
+      />
     </div>
   );
-};
+});
 
 export default Background;
