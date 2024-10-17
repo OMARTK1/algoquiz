@@ -1,0 +1,147 @@
+button {
+  background-image: linear-gradient(135deg, #3f51b5, #2196f3);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-image: linear-gradient(135deg, #303f9f, #1976d2);
+  transform: scale(1.1);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+}
+
+/* Add an icon to buttons with icons */
+button .icon {
+  margin-right: 10px;
+}
+
+/* Animation for a ripple effect on click */
+button:active:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  to {
+      transform: translate(-50%, -50%) scale(4);
+      opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  button {
+      width: 100%;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+  }
+
+  .container {
+    padding: 15px;
+  }
+  
+  header {
+      padding: 15px 0;
+  }
+
+  header h1 {
+      font-size: 1.8rem;
+  }
+
+  nav a {
+      padding: 8px 15px;
+  }
+
+  footer {
+      padding: 10px 0;
+      font-size: 14px;
+  }
+
+  main {
+      padding: 15px 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+    padding: 80px 0px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  main {
+      padding: 10px 15px;
+  }
+
+  nav ul {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  nav a {
+      margin: 10px 0;
+  }
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* New Animations */
+@keyframes buttonGrow {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* Slide-in effect for headers */
+h1, h2, h3 {
+  animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
