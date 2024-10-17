@@ -1,17 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/BackNavigation.css';
 
 const BackNavigation = ({ resetCategory, resetLevel }) => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <button onClick={() => navigate('/')}>Back to Home</button>
+    <div className="back-navigation">
+      <button onClick={() => navigate('/')}>
+        <i className="fas fa-home icon"></i> Back Home
+      </button>
       {resetCategory && (
-        <button onClick={resetCategory}>Back to Category</button>
+        <button onClick={resetCategory}>
+          Back to Category
+        </button>
       )}
       {resetLevel && (
-        <button onClick={resetLevel}>Back to Level</button>
+        <button onClick={resetLevel}>
+          Back to Level
+        </button>
       )}
     </div>
   );
