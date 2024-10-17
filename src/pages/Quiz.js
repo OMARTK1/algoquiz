@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { useNavigate, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import quizData from '../data/quizData.json'; // Importing custom quiz data
-import Timer from '../components/Timer'; // Importing Timer component
-import Continue from '../components/Continue'; // Importing the Continue button component
-import BackNavigation from '../components/BackNavigation'; // Import BackNavigation
+import quizData from '../data/quizData.json';
+import Timer from '../components/Timer';
+import Continue from '../components/Continue';
+import BackNavigation from '../components/BackNavigation';
 
 const Quiz = () => {
-  const location = useLocation(); // Get location to retrieve navigation state
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedLevel, setSelectedLevel] = useState(null);
   const [questions, setQuestions] = useState([]);
@@ -16,7 +16,7 @@ const Quiz = () => {
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [timerDuration, setTimerDuration] = useState(5); // Set timer duration to 5 minutes
+  const [timerDuration, setTimerDuration] = useState(5);
   const navigate = useNavigate();
 
   // Categories and levels
@@ -49,11 +49,11 @@ const Quiz = () => {
                   correct_answer: question.correct_answer,
                 })));
                 setAnswers({});
-                break; // Successful fetch, exit the loop
+                break;
               } else {
                 console.error('No questions found for Computer Science');
                 setQuestions([]);
-                break; // Exit loop if no questions
+                break;
               }
             } else {
               if (response.status === 429) {
@@ -68,7 +68,7 @@ const Quiz = () => {
 
           if (attempts === maxAttempts) {
             console.error('Failed to fetch questions after multiple attempts.');
-            setQuestions([]); // Optionally clear questions
+            setQuestions([]);
           }
         }
       } catch (error) {
@@ -83,9 +83,9 @@ const Quiz = () => {
   useEffect(() => {
     const quizState = location.state;
     if (quizState?.category) {
-      setSelectedCategory(quizState.category); // Automatically set the category from the navigation state
-      setSelectedLevel(quizState.level); // Automatically set the level from the navigation state
-      setTimerDuration(5); // Set timer duration to 5 minutes
+      setSelectedCategory(quizState.category);
+      setSelectedLevel(quizState.level);
+      setTimerDuration(5);
     }
   }, [location.state]);
 
@@ -117,10 +117,10 @@ const Quiz = () => {
       state: { 
         score: newScore, 
         total: questions.length, 
-        questions, // Pass the questions here
-        answers,   // Pass the answers here
+        questions,
+        answers,
         category: selectedCategory, 
-        level: selectedLevel // Include the level here
+        level: selectedLevel
       } 
     });
   };  
@@ -158,7 +158,9 @@ const Quiz = () => {
                 <>
                   {levels.map((level) => (
                     <li key={level}>
-                      <button onClick={() => setSelectedLevel(level)}>{level.charAt(0).toUpperCase() + level.slice(1)}</button>
+                      <button onClick={() => setSelectedLevel(level)}>
+                        {level.charAt(0).toUpperCase() + level.slice(1)}
+                      </button>
                     </li>
                   ))}
                 </>

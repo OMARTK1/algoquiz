@@ -1,0 +1,223 @@
+.quiz-page {
+  background-color: transparent;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 20px auto;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+  }
+
+  form {
+    margin: 20px 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 5px 0;
+    padding: 5px 0;
+  }
+
+  /* Options List Styling */
+  ul.options-list {
+    margin-top: 20px;
+    padding: 0 65px 20px;
+    width: 100%;
+  }
+
+  li.question-item {
+    margin-bottom: 30px;
+  }
+
+  li {
+    display: flex;
+    margin: 15px 0;
+    transition: background-color 0.3s ease;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: space-between;
+  }
+
+  /* Option Item Styling */
+  li.option-item {
+    padding: 10px 15px;
+    margin: 5px 5px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1rem;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center !important;
+    text-align: center;
+  }
+
+  /* Hover and selected state for options */
+  li.option-item:hover {
+    background-color: #e0f7fa;
+  }
+
+  li.option-item.selected {
+    background-color: #d1e7dd;
+    border: 2px solid #4caf50;
+    transform: scale(1.05);
+  }
+
+  label {
+    font-family: ui-sans-serif;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100vh;
+    align-content: center;
+    font-size: x-large;
+  }
+
+  /* Quiz Page Button Styling */
+  button {
+    width: 100%;
+    background-image: linear-gradient(135deg, #3f51b5, #2196f3);
+    border: none;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 4px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-image 0.3s ease, transform 0.3s ease;
+  }
+
+  button:hover {
+    background-image: linear-gradient(135deg, #303f9f, #1976d2);
+  }
+
+  /* Media Queries for Mobile */
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+
+    button {
+      width: 100%;
+      padding: 15px;
+    }
+  }
+
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    button {
+      width: 100%;
+      margin: 10px 10px !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      padding: 15px;
+    }
+
+    header {
+      padding: 15px 0;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+    }
+
+    nav a {
+      padding: 8px 15px;
+    }
+
+    footer {
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    main {
+      padding: 15px 20px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    body {
+      font-size: 14px;
+      padding: 80px 0px;
+    }
+
+    .container {
+      padding: 10px;
+    }
+
+    main {
+      padding: 10px 15px;
+    }
+
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav a {
+      margin: 10px 0;
+    }
+  }
+
+  /* Animations */
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Slide-in effect for headers */
+  h1, h2, h3 {
+    animation: slideIn 0.8s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+.back-navigation {
+  display: flex;
+  width: fit-content;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.question-mark-animation main{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.question-mark-animation {
+  direction: rtl;
+}
