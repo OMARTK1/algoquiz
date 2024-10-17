@@ -1,0 +1,86 @@
+/* Container styling for the main content */
+.container {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+/* Styling for the title */
+.title {
+  color: #333;
+  text-align: center;
+}
+
+/* Styling for the list of questions */
+.question-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Styling for each question item */
+.question-item {
+  margin: 10px 0;
+}
+
+/* Styling for the question text */
+.question {
+  color: #555;
+}
+
+/* Styling for the list of options */
+.option-list {
+  margin-left: 20px;
+}
+
+/* Styling for each option item */
+.option-item {
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+/* Styling for correct answers */
+.green {
+  color: green;
+}
+
+/* Styling for incorrect answers */
+.red {
+  color: red;
+}
+
+/* Styling for neutral text */
+.black {
+  color: black;
+}
+
+/* Button Styling */
+.button {
+  background-image: linear-gradient(135deg, #3f51b5, #2196f3);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.button:hover {
+  background-image: linear-gradient(135deg, #303f9f, #1976d2);
+}
+
+/* Back navigation button styling */
+.backNavButton {
+  background-image: linear-gradient(135deg, #3f51b5, #2196f3);
+  font-size: 18px;
+}
+
+/* Back navigation button hover effect */
+.backNavButton:hover {
+  background-image: linear-gradient(135deg, #303f9f, #1976d2);
+  transform: scale(1.1);
+}

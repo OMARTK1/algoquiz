@@ -1,0 +1,46 @@
+/* styles/Timer.css */
+@font-face {
+  font-family: 'Digital-7';
+  src: url('../assets/fonts/digital-7.ttf') format('truetype');
+}
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Digital-7', sans-serif;
+  background-color: #f0f4c3;
+  color: #333;
+  font-size: 36px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 200px;
+  margin: 20px auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in;
+}
+
+.timer-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+
+img, video {
+  max-width: 100%;
+  width: 40px;
+  height: auto;
+}
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: block;
+  vertical-align: middle;
+}
+
+.timer-container h3 {
+  font-size: 36px;
+  color: #333;
+  margin: 0;
+}
