@@ -1,15 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import '../styles/Retry.css';
 
-const Retry = ({ category, level }) => {
-  const navigate = useNavigate();
-
-  const handleRetry = () => {
-    navigate(`/quiz/${category}/${level}`);
-  };
-
+const Retry = ({ onRetry }) => {
   return (
-    <button onClick={handleRetry}>Retry Quiz</button>
+    <button onClick={onRetry}><i className="fas fa-redo icon"></i>Retry</button>
   );
 };
 
