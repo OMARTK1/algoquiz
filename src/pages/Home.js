@@ -1,33 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import Background from '../components/Background'; // Import BackgroundSwitcher
+import Background from '../components/Background';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Lottie from 'lottie-react'; // Import Lottie
-import homeAnimation from '../assets/animations/Animation - Home_quote.json'; // Import your main animation
-import loadingAnimation from '../assets/animations/Animation - Loading.json'; // Import loading animation
+import Lottie from 'lottie-react';
+import homeAnimation from '../assets/animations/Animation - Home_quote.json';
+import loadingAnimation from '../assets/animations/Animation - Loading.json';
 import '../styles/Home.css';
 
 const Home = () => {
-  const [isDropdownOpen, setDropdownOpen] = useState({}); // Object to track dropdown states
-  const [loading, setLoading] = useState(true); // State to manage loading animation
+  const [isDropdownOpen, setDropdownOpen] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a delay to showcase loading animation
     setTimeout(() => {
-      setLoading(false); // Set loading to false after content is "loaded"
-    }, 2000); // Simulate 2 seconds loading time
+      setLoading(false);
+    }, 2000);
   }, []);
 
   const toggleDropdown = (language) => {
     setDropdownOpen(prevState => ({
       ...prevState,
-      [language]: !prevState[language], // Toggle the specific dropdown
+      [language]: !prevState[language],
     }));
   };
 
   if (loading) {
-    // Show loading animation while loading state is true
     return (
       <div className="loading-container">
         <Lottie animationData={loadingAnimation} loop={true} />
@@ -38,13 +36,11 @@ const Home = () => {
 
   return (
     <div>
-      <Background /> {/* Add the background switcher here */}
+      <Background />
       <Header />
       <main className="main-content">
         <div className="home-content">
           <h2>Welcome to AlgoQuiz!</h2>
-          
-          {/* Add Lottie animation here */}
           <div className="lottie-container">
             <Lottie animationData={homeAnimation} loop={true} />
           </div>
@@ -52,8 +48,6 @@ const Home = () => {
           <p>Ready to sharpen your coding skills and master algorithms? AlgoQuiz is designed to test and enhance your understanding of algorithms and data structures, a crucial part of any developer's toolkit. Whether you’re a beginner or a seasoned programmer, AlgoQuiz offers engaging and challenging quizzes that cover essential topics.</p>
           <p>For more coding tutorials and resources, check out <a className="w3school" href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">W3Schools</a>.</p>
           <Link className="quiz-link" to="/quiz">Start Quiz</Link>
-
-          {/* Dropdown Menus */}
           <div className="dropdowns">
             <div className="dropdown">
               <button className="dropdown-button" onClick={() => toggleDropdown('C')}>
