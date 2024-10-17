@@ -1,0 +1,89 @@
+/* Styles for the Terms and Conditions page */
+
+.terms-and-conditions-page {
+    padding: 20px;
+}
+
+.terms-and-conditions-page main {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.table-is-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    font-weight: bold;
+}
+
+td {
+    padding: 10px;
+}
+
+h1, h2, h3 {
+    color: #3e005d;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+ul {
+    margin-left: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .terms-and-conditions-page main {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 992px) {
+    .terms-and-conditions-page main {
+        max-width: 750px;
+    }
+}
+
+@media (max-width: 768px) {
+    .terms-and-conditions-page main {
+        max-width: 500px;
+        padding: 10px 20px;
+    }
+
+    h2 {
+        font-size: large;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .terms-and-conditions-page main {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: medium;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
